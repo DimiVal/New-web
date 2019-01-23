@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">    <link rel='stylesheet' type='text/css' href='yourcssfile.css'>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+   <!--  <style>
+
+        * {
+  box-sizing: border-box;
+        }
+
+        #myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width:50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+        table,
+        th,
+        tr,
+        td {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+    </style> -->
+
+</head>
+
+<body>
+    <h1>Hello</h1>
+
+    <p>Please click the button.</p>
+
+    <br />
+
+    <input id="myBtn" type="myBtn" value="Click to create table with event" />
+    <input type="myBtn" onclick="createTable()" value="Click to create table onClick" />
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by userId: " />
+    <p id="showTable"></p>
+    
+
+    <h2>Bye</h2>
+
+</body>
+
+<script src="demo_src.js">
+    </script>
+
+<!-- <script>
+    document.getElementById("showTable").innerHTML = "Table:";
+    document.getElementById("myBtn").addEventListener("click", createTable)
+
+    function createUserTable(){
+
+
+
+    }
+
+    function createTable() {
+        fetch('https://jsonplaceholder.typicode.com/albums')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                createTable2(myJson)
+            });
+    }
+
+    function createAlbumTable(myAlbums) {
+        const col = [];
+        for (let i = 0; i < myAlbums.length; i++) {
+            for (const key in myAlbums[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        const table = document.createElement("table");
+
+        let tr = table.insertRow(-1);
+
+        for (let i = 0; i < col.length; i++) {
+            const th = document.createElement("th");
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        for (let i = 0; i < myAlbums.length; i++) {
+            tr = table.insertRow(-1);
+
+            for (let j = 0; j < col.length; j++) {
+                const tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myAlbums[i][col[j]];
+            }
+        }
+        const divContainer = document.getElementById("showTable");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("showTable");
+
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script> -->
+</html>

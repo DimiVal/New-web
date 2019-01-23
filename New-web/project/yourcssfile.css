@@ -1,0 +1,26 @@
+        box-sizing border-box   
+        #myInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width:50%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border-style: groove;
+        border-color: black;
+        margin-bottom: 12px;
+        }
+              table,
+              th,
+              tr,
+              td {
+                  border-style: groove;
+                  border-color: black;
+                  border-collapse: collapse;
+                  padding: 1px 3px;
+                  text-align: center;
+              }
+              th {
+                  font-weight: bold;
+              }
+            
