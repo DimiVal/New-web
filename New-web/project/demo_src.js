@@ -1,9 +1,8 @@
-document.getElementById("showTable").innerHTML = "Table:";
+document.getElementById("showTable").innerHTML = "Table: ";
 document.getElementById("myBtn").addEventListener("click", createTable);
-document.getElementById("showUserTable").innerHTML = "UserTable";
+document.getElementById("UserTable").addEventListener("click", createAlbumTable);
 
-/* 
-function createUserTable() {
+function createTable() {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(function (response) {
             return response.json();
@@ -12,53 +11,11 @@ function createUserTable() {
             createUserTable(myJson)
         })
 }
-
 
 function createUserTable(myUsers) {
     const col = [];
-    for (let i = 0; i <myUsers.length; i++){
-        for (const key in myUsers[i]){
-            if(col.indexOf(key) === -1) {
-                col.push(key);
-            }
-        }
-    }
-} */
-
-function createTable() {
-    /* fetch('https://jsonplaceholder.typicode.com/albums')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (myJson) {
-            createAlbumTable(myJson)
-        }); */
-
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (myJson) {
-            createUserTable(myJson)
-        })
-
-}
-
-function addRowHandlers() {
-    let rows = document.getElementById("showAlbumTable").rows;
-    for (i = 0; i < rows.length; i++) {
-        rows[i].onclick = function(){ return function(){
-               var id = this.cells[0].innerHTML;
-               alert("id:" + id);
-        };}(rows[i]);
-    }
-}
-window.onload = addRowHandlers();
-
-function createUserTable(myAlbums) {
-    const col = [];
-    for (let i = 0; i < myAlbums.length; i++) {
-        for (const key in myAlbums[i]) {
+    for (let i = 0; i < myUsers.length; i++) {
+        for (const key in myUsers[i]) {
             if (col.indexOf(key) === -1) {
                 col.push(key);
             }
@@ -75,18 +32,46 @@ function createUserTable(myAlbums) {
         tr.appendChild(th);
     }
 
-    for (let i = 0; i < myAlbums.length; i++) {
+    for (let i = 0; i < myUsers.length; i++) {
         tr = table.insertRow(-1);
 
         for (let j = 0; j < col.length; j++) {
             const tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = myAlbums[i][col[j]];
+            tabCell.innerHTML = myUsers[i][col[j]];
         }
     }
     let divContainer = document.getElementById("showTable");
     divContainer.innerHTML = "";
     divContainer.appendChild(table);
 }
+
+function onRowClick(myUsers, callback) {
+    var table = document.getElementById(myUsers),
+        rows = table.getElementsByTagName("tr"),
+        i;
+    for (i = 0; i < rows.length; i++) {
+        table.rows[i].onclick = function (row) {
+            return function () {
+                callback(row);
+            };
+        }(table.rows[i]);
+    }
+};
+
+onRowClick("showTable", function (row) {
+    var value = row.getElementsByTagName("td")[0].innerHTML;
+    document.getElementById('click-response').innerHTML = value;
+
+    function createTable() {
+    fetch('https://jsonplaceholder.typicode.com/albums'    )
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            showAlbumTable(myJson)
+        });
+    }
+});
 
 function searchFunction() {
     var input, filter, table, tr, td, i, txtValue;
